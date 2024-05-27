@@ -4,6 +4,7 @@
 
 1. [Contexte](#contexte)
 2. [Definition Merise](#merise_definition)
+3. [Pré-requis](#pre_requis_installation)
 
 ## Contexte <a  href ="" id="contexte"></a>
 
@@ -48,3 +49,37 @@ Le Modèle Logique de données (MLD) permet de modèliser un schéma plus proche
 LE niveau physique est la traduction du modèle logique pour un SGBD personalisé. Selon le SGBD et le langage choisi, le modèle va créer un script qui sera exécutable sur le SGBD. 
 
 L'intérêt du Modéle Physique de données (MPD) est de traduire concrétement le modèle immaginé pour qu'il soit exécutable sur un SGBD. Cette étape permet aussi d'optimiser les performances en ajoutant des index, choissisant les bons types de données et en sécurisant la base de données 
+
+## Pré-requis <a  href ="" id="pre_requis_installation"></a>
+
+La base de données choisie utilise le langage PostgreSQL qui comporte une spécificité : elle autorise le type JSONB pour les attributs. Ce qui différencie de MySQL ou MariaDB qui accepte le type JSON depuis MySQL 5.7 et MariaDB 10.2. 
+
+Le JSONB est disponible depuis la version 9.4 de PostgreSQL. 
+
+Pré-requis et Installation: 
+
+1/Installer une version de POSTGRES > 9.4 (Lien vers les dernières version de POSTGRES selon l'OS : https://www.postgresql.org/download/)
+
+2/Lancer postgreSQL (avec PgAdmin)
+
+3/ Créer la database pire2pire (avec votre utilisateur. Par défaut : postgres)
+
+4/ Ouvrir PSQL Tools 
+
+![tuto pour créer la base de données](tuto_create_database/psql_tools.png)
+
+5/ Lancer la commande pour copier le contenu du script vers PgAdmin
+
+```sh
+\i  'chemin_fichier'
+```
+
+Remplacer:
+- chemin_fichier par le chemin du script sur votre ordinateur(Exemple: ./pire2pire/docs/script.sql)
+
+
+> **ATTENTION!!!**  Si le fichier se trouve dans des dossiers remplacer les \ par des / ET mettez le chemin du fichier entre cote simple 
+
+Exemple: C:\Users\script_bdd\script.sql ==> **'C:/Users/script_bdd/script.sql'**
+
+
