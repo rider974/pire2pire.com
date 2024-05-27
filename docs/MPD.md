@@ -2,20 +2,20 @@
 
 ### Table : `status`
 - `id_status` : SERIAL, PRIMARY KEY
-- `status_title` : VARCHAR(50)
+- `status_title` : VARCHAR(50), UNIQUE 
 
 ### Table : `formations`
 - `id_formation` : SERIAL, PRIMARY KEY
-- `formation_title` : VARCHAR(100), NOT NULL
+- `formation_title` : VARCHAR(100), UNIQUE, NOT NULL
 - `id_status` : INTEGER, NOT NULL, FOREIGN KEY REFERENCES `status(id_status)`
 
 ### Table : `tags`
 - `id_tag` : SERIAL, PRIMARY KEY
-- `tag_title` : VARCHAR(100), NOT NULL
+- `tag_title` : VARCHAR(100), UNIQUE, NOT NULL
 
 ### Table : `roles`
 - `id_role` : SERIAL, PRIMARY KEY
-- `role_title` : VARCHAR(75), NOT NULL
+- `role_title` : VARCHAR(75), UNIQUE, NOT NULL
 - `privilege_number` : SMALLINT
 
 ### Table : `users`
@@ -27,7 +27,7 @@
 - `zip_code` : CHAR(10)
 - `city` : VARCHAR(75)
 - `additionnal_adress` : TEXT
-- `email` : VARCHAR(200)
+- `email` : VARCHAR(200), UNIQUE
 - `password` : VARCHAR(255)
 - `teacher_code` : SMALLINT
 - `is_active` : BOOLEAN
@@ -42,13 +42,13 @@
 
 ### Table : `modules`
 - `id_module` : SERIAL, PRIMARY KEY
-- `module_title` : VARCHAR(100), NOT NULL
+- `module_title` : VARCHAR(100), UNIQUE, NOT NULL
 - `id_user` : INTEGER, NOT NULL, FOREIGN KEY REFERENCES `users(id_user)`
 - `id_status` : INTEGER, NOT NULL, FOREIGN KEY REFERENCES `status(id_status)`
 
 ### Table : `lessons`
 - `id_lesson` : SERIAL, PRIMARY KEY
-- `lesson_title` : VARCHAR(100), NOT NULL
+- `lesson_title` : VARCHAR(100), UNIQUE, NOT NULL
 - `text` : TEXT
 - `video` : TEXT
 - `images` : JSONB
