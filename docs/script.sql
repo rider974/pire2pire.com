@@ -1,7 +1,8 @@
 CREATE TABLE status(
    id_status SERIAL,
-   status_title VARCHAR(50) ,
-   PRIMARY KEY(id_status)
+   status_title VARCHAR(50)  NOT NULL,
+   PRIMARY KEY(id_status),
+   UNIQUE(status_title)
 );
 
 CREATE TABLE formations(
@@ -9,20 +10,23 @@ CREATE TABLE formations(
    formation_title VARCHAR(100)  NOT NULL,
    id_status INTEGER NOT NULL,
    PRIMARY KEY(id_formation),
+   UNIQUE(formation_title),
    FOREIGN KEY(id_status) REFERENCES status(id_status)
 );
 
 CREATE TABLE tags(
    id_tag SERIAL,
    tag_title VARCHAR(100)  NOT NULL,
-   PRIMARY KEY(id_tag)
+   PRIMARY KEY(id_tag),
+   UNIQUE(tag_title)
 );
 
 CREATE TABLE roles(
    id_role SERIAL,
    role_title VARCHAR(75)  NOT NULL,
-   privilege_number SMALLINT,
-   PRIMARY KEY(id_role)
+   privilege_number SMALLINT NOT NULL,
+   PRIMARY KEY(id_role),
+   UNIQUE(role_title)
 );
 
 CREATE TABLE users(
@@ -34,12 +38,13 @@ CREATE TABLE users(
    zip_code CHAR(10) ,
    city VARCHAR(75) ,
    additionnal_adress TEXT,
-   email VARCHAR(200) ,
-   password VARCHAR(255) ,
+   email VARCHAR(200)  NOT NULL,
+   password VARCHAR(255)  NOT NULL,
    teacher_code SMALLINT,
-   is_active BOOLEAN,
+   is_active BOOLEAN NOT NULL,
    id_role INTEGER NOT NULL,
    PRIMARY KEY(id_user),
+   UNIQUE(email),
    FOREIGN KEY(id_role) REFERENCES roles(id_role)
 );
 
@@ -59,6 +64,7 @@ CREATE TABLE modules(
    id_user INTEGER NOT NULL,
    id_status INTEGER NOT NULL,
    PRIMARY KEY(id_module),
+   UNIQUE(module_title),
    FOREIGN KEY(id_user) REFERENCES users(id_user),
    FOREIGN KEY(id_status) REFERENCES status(id_status)
 );
@@ -72,6 +78,7 @@ CREATE TABLE lessons(
    id_module INTEGER,
    id_status INTEGER NOT NULL,
    PRIMARY KEY(id_lesson),
+   UNIQUE(lesson_title),
    FOREIGN KEY(id_module) REFERENCES modules(id_module),
    FOREIGN KEY(id_status) REFERENCES status(id_status)
 );
