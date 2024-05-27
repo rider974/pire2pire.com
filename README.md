@@ -25,6 +25,26 @@ Chaque apprenant est caractérisé par un numéro d’inscription unique, un nom
 
 Un formateurs est auteur d'un module pour une formation donnée, chaque formateur est caractérisé par un code, un nom, un prénom.
 
-## Definition Merise 
+## Definition Merise  <a  href ="" id="merise_definition"></a>
 
 Merise est une méthode d'analyse et de conceptualisation de système d'information. Elle permet de modéliser de manière structurée une base de données. Elle est découpée en trois parties : niveau conceptuel, logique et physique.
+
+### Niveau conceptuel 
+
+Le niveau conceptuel permet de représenter sous de schéma structuré un système d'information. Transformer des besoins métiers identifié par des règles de gestion sous la forme d'un schéma qui facilitera la construction du système d'information au niveau technique. 
+
+Le Modèle conceptuel de données (MCD) est un schéma qui permet de modéliser au niveau de cette étape. 
+
+Il est découpé sous forme d'entité composé de champs et de relations entre entités. 
+
+### Niveau Logique 
+
+Le niveau logique permet de représenter les entités et les relations plus clairement. En faisant ressortir les clés primaires et étrangères mais aussi les contraintes, il se rapproche du schéma que peut comprendre un Système de Gestion de Base de données (PhpMyAdmin ou PgAdmin). 
+
+Le Modèle Logique de données (MLD) permet de modèliser un schéma plus proche de la réalité du système de données qui sera mis en place.
+
+### Niveau Physique 
+
+LE niveau physique est la traduction du modèle logique pour un SGBD personalisé. Selon le SGBD et le langage choisi, le modèle va créer un script qui sera exécutable sur le SGBD. 
+
+L'intérêt du Modéle Physique de données (MPD) est de traduire concrétement le modèle immaginé pour qu'il soit exécutable sur un SGBD. Cette étape permet aussi d'optimiser les performances en ajoutant des index, choissisant les bons types de données et en sécurisant la base de données 
