@@ -3,8 +3,8 @@
 ## TABLES DES MATIERES : 
 
 1. [Contexte](#contexte)
-2. [Definition Merise](#merise_definition)
-3. [Pré-requis](#pre_requis_installation)
+2. [Définition Merise](#merise_definition)
+3. [Pré-requis et Installation ](#pre_requis_installation)
 
 ## Contexte <a  href ="" id="contexte"></a>
 
@@ -26,7 +26,7 @@ Chaque apprenant est caractérisé par un numéro d’inscription unique, un nom
 
 Un formateurs est auteur d'un module pour une formation donnée, chaque formateur est caractérisé par un code, un nom, un prénom.
 
-## Definition Merise  <a  href ="" id="merise_definition"></a>
+## Définition Merise  <a  href ="" id="merise_definition"></a>
 
 Merise est une méthode d'analyse et de conceptualisation de système d'information. Elle permet de modéliser de manière structurée une base de données. Elle est découpée en trois parties : niveau conceptuel, logique et physique.
 
@@ -50,17 +50,17 @@ LE niveau physique est la traduction du modèle logique pour un SGBD personalis�
 
 L'intérêt du Modéle Physique de données (MPD) est de traduire concrétement le modèle immaginé pour qu'il soit exécutable sur un SGBD. Cette étape permet aussi d'optimiser les performances en ajoutant des index, choissisant les bons types de données et en sécurisant la base de données 
 
-## Pré-requis <a  href ="" id="pre_requis_installation"></a>
+## Pré-requis et Installation<a  href ="" id="pre_requis_installation"></a>
 
-La base de données choisie utilise le langage PostgreSQL qui comporte une spécificité : elle autorise le type JSONB pour les attributs. Ce qui différencie de MySQL ou MariaDB qui accepte le type JSON depuis MySQL 5.7 et MariaDB 10.2. 
+La base de données choisie utilise le langage PostgreSQL qui comporte une spécificité : elle autorise le type JSONB pour les attributs. Ce qui le différencie de MySQL ou MariaDB qui accepte le type JSON (depuis MySQL 5.7 et MariaDB 10.2). 
 
 Le JSONB est disponible depuis la version 9.4 de PostgreSQL. 
 
 Pré-requis et Installation: 
 
-1/Installer une version de POSTGRES > 9.4 (Lien vers les dernières version de POSTGRES selon l'OS : https://www.postgresql.org/download/)
+1/Installer une version de PostgreSQL > 9.4 (Lien vers les dernières version de PostgreSQL selon l'OS : https://www.postgresql.org/download/)
 
-2/Lancer postgreSQL (avec PgAdmin)
+2/Lancer PostgreSQL (avec PgAdmin)
 
 3/ Créer la database pire2pire (avec votre utilisateur. Par défaut : postgres)
 
