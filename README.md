@@ -3,7 +3,7 @@
 ## TABLES DES MATIERES : 
 
 1. [Contexte](#contexte)
-2. [Rules Management](#rules_management)
+2. [Definition Merise](#merise_definition)
 
 ## Contexte <a  href ="" id="contexte"></a>
 
@@ -24,3 +24,7 @@ Une formation est considérée comme terminée lorsque tous les modules ont ét�
 Chaque apprenant est caractérisé par un numéro d’inscription unique, un nom, un prénom, une adresse et une date de naissance.
 
 Un formateurs est auteur d'un module pour une formation donnée, chaque formateur est caractérisé par un code, un nom, un prénom.
+
+## Definition Merise 
+
+Merise est une méthode d'analyse et de conceptualisation de système d'information. Elle permet de modéliser de manière structurée une base de données. Elle est découpée en trois parties : niveau conceptuel, logique et physique.
