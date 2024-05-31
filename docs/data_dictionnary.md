@@ -32,7 +32,7 @@
 |             | postal_code               | CHAR | 10      |       NOT NULL                              |This is the user's postal code                                      | 12345
 |             | city                      | VARCHAR | 75   |       NOT NULL                              |This is the user's city                                             | Springfield
 |             | country                   | VARCHAR | 200   |      NOT NULL                               |This is the name of the user's address country                               | England
-|             | additionnal_adress        | TEXT     |     |        NULLABLE                             |This is additional address information                              | Apt 4B
+|             | complementary_address        | TEXT     |     |        NULLABLE                             |This is additional address information                              | Apt 4B
 | Roles       | <u>**role_id**</u>        | INTEGER AUTO_INCREMENT | 11   | PRIMARY KEY, UNIQUE, NOT NULL       | This is a unique role id                                            | 1
 |             | role_title                | VARCHAR | 75   |        UNIQUE, NOT NULL                             |This is the title of the role                                       | Admin
 |             | privilege_number          | INTEGER | 11      |        UNIQUE, NOT NULL                             |This is the privilege level of the role                             | 4
@@ -49,4 +49,4 @@
 |             | <u>**user_id**</u>        | INTEGER | 11 | PRIMARY KEY,FOREIGN KEY, UNIQUE, NOT NULL    | Foreign key of table user                                           | 4
 | learn       | <u>**module_id**</u>      | INTEGER | 11 | PRIMARY KEY,FOREIGN KEY, UNIQUE, NOT NULL    | Foreign key of table module                                         | 1
 |             | <u>**user_id**</u>        | INTEGER | 11 | PRIMARY KEY,FOREIGN KEY, UNIQUE, NOT NULL    | Foreign key of table user                                           | 3
-|             | is_validate                 BOOLEAN |       |      NOT NULL                               |Indicates if the module is validated                                | true
+|             | is_validate               | BOOLEAN |       |      NOT NULL                               |Indicates if the module is validated                                | true
