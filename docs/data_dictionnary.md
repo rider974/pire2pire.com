@@ -1,5 +1,5 @@
 |Entité  | Name                      | Type          | Longeur | Contraintes| Description                                                         | Example
-| ------------------------  | ------------- | ------------------------------------------------------------------- | -------------------
+| ------------------------  | ------------- | ------------------------------------------------------------------- | -------------------| ---------------| -------------|----------
 | Status       | <u>**status_id**</u>      | INTEGER AUTO_INCREMENT | 11   |  PRIMARY KEY, UNIQUE, NOT NULL     | This is a unique status id                                          | 4
 |             | status_title              | VARCHAR | 50    |    UNIQUE, NOT NULL                                 |This is a unique title for a status                                 | Archive
 | Formations    | <u>**formation_id**</u>   | INTEGER AUTO_INCREMENT | 11  | PRIMARY KEY, UNIQUE, NOT NULL       | This is a unique formation id                                       | 2
