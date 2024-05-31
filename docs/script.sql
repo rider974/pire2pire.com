@@ -1,117 +1,125 @@
-CREATE TABLE status(
-   id_status SERIAL,
+CREATE TABLE Status(
+   status_id SERIAL,
    status_title VARCHAR(50)  NOT NULL,
-   PRIMARY KEY(id_status),
+   PRIMARY KEY(status_id),
    UNIQUE(status_title)
 );
 
-CREATE TABLE formations(
-   id_formation SERIAL,
+CREATE TABLE Formations(
+   formation_id SERIAL,
    formation_title VARCHAR(100)  NOT NULL,
-   id_status INTEGER NOT NULL,
-   PRIMARY KEY(id_formation),
+   status_id INTEGER NOT NULL,
+   PRIMARY KEY(formation_id),
    UNIQUE(formation_title),
-   FOREIGN KEY(id_status) REFERENCES status(id_status)
+   FOREIGN KEY(status_id) REFERENCES Status(status_id)
 );
 
-CREATE TABLE tags(
-   id_tag SERIAL,
+CREATE TABLE Tags(
+   tag_id SERIAL,
    tag_title VARCHAR(100)  NOT NULL,
-   PRIMARY KEY(id_tag),
+   PRIMARY KEY(tag_id),
    UNIQUE(tag_title)
 );
 
-CREATE TABLE roles(
-   id_role SERIAL,
+CREATE TABLE Roles(
+   role_id SERIAL,
    role_title VARCHAR(75)  NOT NULL,
    privilege_number SMALLINT NOT NULL,
-   PRIMARY KEY(id_role),
+   PRIMARY KEY(role_id),
    UNIQUE(role_title)
 );
 
-CREATE TABLE users(
-   id_user SERIAL,
+CREATE TABLE Users(
+   user_id SERIAL,
    firstname VARCHAR(100)  NOT NULL,
    surname VARCHAR(100)  NOT NULL,
-   street_name VARCHAR(75) ,
-   street_number VARCHAR(10) ,
-   zip_code CHAR(10) ,
-   city VARCHAR(75) ,
-   additionnal_adress TEXT,
    email VARCHAR(200)  NOT NULL,
    password VARCHAR(255)  NOT NULL,
    teacher_code SMALLINT,
    is_active BOOLEAN NOT NULL,
-   id_role INTEGER NOT NULL,
-   PRIMARY KEY(id_user),
+   role_id INTEGER NOT NULL,
+   PRIMARY KEY(user_id),
    UNIQUE(email),
-   FOREIGN KEY(id_role) REFERENCES roles(id_role)
+   FOREIGN KEY(role_id) REFERENCES Roles(role_id)
 );
 
-CREATE TABLE favorites(
-   id_favorite SERIAL,
+CREATE TABLE Favorites(
+   favorite_id SERIAL,
    modules JSONB,
    lessons JSONB,
    formations JSONB,
-   id_user INTEGER NOT NULL,
-   PRIMARY KEY(id_favorite),
-   FOREIGN KEY(id_user) REFERENCES users(id_user)
+   user_id INTEGER NOT NULL,
+   PRIMARY KEY(favorite_id),
+   FOREIGN KEY(user_id) REFERENCES Users(user_id)
 );
 
-CREATE TABLE modules(
-   id_module SERIAL,
+CREATE TABLE User_address(
+   user_address_id SERIAL,
+   street_number SMALLINT,
+   street_name VARCHAR(125)  NOT NULL,
+   city VARCHAR(125)  NOT NULL,
+   postal_code VARCHAR(5)  NOT NULL,
+   country VARCHAR(200)  NOT NULL,
+   complementary_address TEXT,
+   user_id INTEGER NOT NULL,
+   PRIMARY KEY(user_address_id),
+   FOREIGN KEY(user_id) REFERENCES Users(user_id)
+);
+
+CREATE TABLE Modules(
+   module_id SERIAL,
    module_title VARCHAR(100)  NOT NULL,
-   id_user INTEGER NOT NULL,
-   id_status INTEGER NOT NULL,
-   PRIMARY KEY(id_module),
+   user_id INTEGER NOT NULL,
+   status_id INTEGER NOT NULL,
+   PRIMARY KEY(module_id),
    UNIQUE(module_title),
-   FOREIGN KEY(id_user) REFERENCES users(id_user),
-   FOREIGN KEY(id_status) REFERENCES status(id_status)
+   FOREIGN KEY(user_id) REFERENCES Users(user_id),
+   FOREIGN KEY(status_id) REFERENCES Status(status_id)
 );
 
-CREATE TABLE lessons(
-   id_lesson SERIAL,
+CREATE TABLE Lessons(
+   lesson_id SERIAL,
    lesson_title VARCHAR(100)  NOT NULL,
    text TEXT,
    video TEXT,
    images JSONB,
-   id_module INTEGER,
-   id_status INTEGER NOT NULL,
-   PRIMARY KEY(id_lesson),
+   module_id INTEGER,
+   status_id INTEGER NOT NULL,
+   PRIMARY KEY(lesson_id),
    UNIQUE(lesson_title),
-   FOREIGN KEY(id_module) REFERENCES modules(id_module),
-   FOREIGN KEY(id_status) REFERENCES status(id_status)
+   FOREIGN KEY(module_id) REFERENCES Modules(module_id),
+   FOREIGN KEY(status_id) REFERENCES Status(status_id)
 );
 
-CREATE TABLE lessons_tags(
-   id_tag INTEGER,
-   id_lesson INTEGER,
-   PRIMARY KEY(id_tag, id_lesson),
-   FOREIGN KEY(id_tag) REFERENCES tags(id_tag),
-   FOREIGN KEY(id_lesson) REFERENCES lessons(id_lesson)
+CREATE TABLE learn(
+   user_id INTEGER,
+   module_id INTEGER,
+   is_validate BOOLEAN NOT NULL,
+   PRIMARY KEY(user_id, module_id),
+   FOREIGN KEY(user_id) REFERENCES Users(user_id),
+   FOREIGN KEY(module_id) REFERENCES Modules(module_id)
 );
 
-CREATE TABLE formation_module(
-   id_formation INTEGER,
-   id_module INTEGER,
-   PRIMARY KEY(id_formation, id_module),
-   FOREIGN KEY(id_formation) REFERENCES formations(id_formation),
-   FOREIGN KEY(id_module) REFERENCES modules(id_module)
+CREATE TABLE compose(
+   module_id INTEGER,
+   formation_id INTEGER,
+   PRIMARY KEY(module_id, formation_id),
+   FOREIGN KEY(module_id) REFERENCES Modules(module_id),
+   FOREIGN KEY(formation_id) REFERENCES Formations(formation_id)
 );
 
-CREATE TABLE formations_followed(
-   id_formation INTEGER,
-   id_user INTEGER,
-   PRIMARY KEY(id_formation, id_user),
-   FOREIGN KEY(id_formation) REFERENCES formations(id_formation),
-   FOREIGN KEY(id_user) REFERENCES users(id_user)
+CREATE TABLE refers_to(
+   tag_id INTEGER,
+   lesson_id INTEGER,
+   PRIMARY KEY(tag_id, lesson_id),
+   FOREIGN KEY(tag_id) REFERENCES Tags(tag_id),
+   FOREIGN KEY(lesson_id) REFERENCES Lessons(lesson_id)
 );
 
-CREATE TABLE modules_followed(
-   id_module INTEGER,
-   id_user INTEGER,
-   ok BOOLEAN,
-   PRIMARY KEY(id_module, id_user),
-   FOREIGN KEY(id_module) REFERENCES modules(id_module),
-   FOREIGN KEY(id_user) REFERENCES users(id_user)
+CREATE TABLE follow(
+   formation_id INTEGER,
+   user_id INTEGER,
+   PRIMARY KEY(formation_id, user_id),
+   FOREIGN KEY(formation_id) REFERENCES Formations(formation_id),
+   FOREIGN KEY(user_id) REFERENCES Users(user_id)
 );

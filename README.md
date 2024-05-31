@@ -28,6 +28,8 @@ Un formateurs est auteur d'un module pour une formation donnée, chaque formateu
 
 ## Définition Merise  <a  href ="" id="merise_definition"></a>
 
+MERISE est un acronyme. Le plus répandu est "Méthode d'Étude et de Réalisation Informatique pour les Systèmes d'Entreprise". MERISE est une méthode qui permet de structurer et de formaliser les étapes de la conception et du développement des systèmes d'information. 
+
 Merise est une méthode d'analyse et de conceptualisation de système d'information. Elle permet de modéliser de manière structurée une base de données. Elle est découpée en trois parties : niveau conceptuel, logique et physique.
 
 ### Niveau conceptuel 
